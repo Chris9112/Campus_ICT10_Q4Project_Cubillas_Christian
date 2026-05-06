@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classmate List</title>
+
+<style>
+body{
+    background: linear-gradient(to right, #50C878, #6FD1D7);
+    font-family: 'Copperplate', sans-serif;
+    margin: 0;
+}
+
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #3aa6ad;
+    list-style-type: none;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar li a:hover {
+    background-color: #2b7f85;
+}
+
+
+.container{
+    padding: 30px;
+    width: 750px;
+    border-radius: 15px;
+    background-color: white;
+    margin: 50px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+
+input{
+    display: block;
+    padding: 12px;
+    width: 90%;
+    border-radius: 10px;
+    border: none;
+    background-color: #e6f7f8;
+    margin: 8px auto;
+}
+
+
+button{
+    margin: 10px 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background-color: #50C878;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #3aa860;
+}
+
+
+.card{
+    background-color: #6FD1D7;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 10px;
+    width: 85%;
+    text-align: left;
+    position: relative;
+}
+
+
+.deleteBtn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: crimson;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="navbar">
+    <ul>
+        <li><a href="index.html">Classmates</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="photos.html">Photos</a></li>
+    </ul>
+</div>
+
+
+<div class="container">
+    <h2>📋 Classmate Profiles</h2>
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="section" placeholder="Section">
+    <input type="text" id="subject" placeholder="Favorite Subject">
+    <input type="text" id="fact" placeholder="Fun Fact">
+
+    <button onclick="addStudent()">Add Student</button>
+    <button onclick="clearList()">Clear All</button>
+
+    <div id="list"></div>
+</div>
+
+<script>
+function addStudent() {
+    let name = document.getElementById("name").value.trim();
+    let section = document.getElementById("section").value.trim();
+    let subject = document.getElementById("subject").value.trim();
+    let fact = document.getElementById("fact").value.trim();
+
+    if (name === "" || section === "" || subject === "" || fact === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    let card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+        <strong>Name:</strong> ${name}<br>
+        <strong>Section:</strong> ${section}<br>
+        <strong>Favorite Subject:</strong> ${subject}<br>
+        <strong>Fun Fact:</strong> ${fact}
+        <span class="deleteBtn" onclick="this.parentElement.remove()">X</span>
+    `;
+
+    document.getElementById("list").appendChild(card);
+
+  
+    document.getElementById("name").value = "";
+    document.getElementById("section").value = "";
+    document.getElementById("subject").value = "";
+    document.getElementById("fact").value = "";
+}
+
+function clearList(){
+    document.getElementById("list").innerHTML = "";
+}
+</script>
+
+</body>
+</html>

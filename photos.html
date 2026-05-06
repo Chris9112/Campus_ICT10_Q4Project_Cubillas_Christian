@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Photos</title>
+
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+<style>
+body{
+    background: linear-gradient(to right, #50C878, #6FD1D7);
+    font-family: 'Copperplate', sans-serif;
+    margin: 0;
+}
+
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #3aa6ad;
+    list-style-type: none;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar li a:hover {
+    background-color: #2b7f85;
+}
+
+
+.container{
+    padding: 30px;
+    width: 800px;
+    border-radius: 15px;
+    background-color: white;
+    margin: 40px auto;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.photo-card{
+    background-color: #6FD1D7;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.photo-card img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.caption{
+    margin-top: 8px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="navbar">
+    <ul>
+        <li><a href="index.html">Classmates</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="photos.html">Photos</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>Grade 10 Emerald 2025-2026's Journey</h2>
+    <div id="gallery" class="gallery"></div>
+</div>
+
+
+<py-script>
+from pyscript import document
+
+photos = [
+    {"src": "pubspeak.png", "caption": "Public Speaking 2026"},
+    {"src": "peacecong.png", "caption": "Grade 10 Peace Congress 2026"},
+    {"src": "intramurals.png", "caption": "2026 Intramurals"},
+    {"src": "teachers.png", "caption": "Teachers Day"}
+]
+
+gallery = document.getElementById("gallery")
+
+for p in photos:
+    card = document.createElement("div")
+    card.setAttribute("class", "photo-card")
+
+    img = document.createElement("img")
+    img.setAttribute("src", p["src"])
+
+    caption = document.createElement("div")
+    caption.setAttribute("class", "caption")
+    caption.innerText = p["caption"]
+
+    card.appendChild(img)
+    card.appendChild(caption)
+    gallery.appendChild(card)
+</py-script>
+
+</body>
+</html>

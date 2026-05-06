@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <py-config>
+packages = ["matplotlib"]
+</py-config>
+
+    <style>
+        body{
+            background: linear-gradient(to right, #50C878, #6FD1D7);
+            font-family: Copperplate;
+            margin: 0;
+        }
+
+        .navbar ul{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            background-color: #3aa6ad;
+        }
+
+        .navbar li a{
+            display: block;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container{
+            width: 750px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        select, input{
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+            background: #e6f7f8;
+        }
+
+        button{
+            padding: 12px 20px;
+            background: #50C878;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #plot {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <ul>
+        <li><a href="index.html">Classmates</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="photos.html">Photos</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>📊 Weekly Attendance Graph</h2>
+
+    <select id="day">
+        <option value="">Select Day</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+    </select>
+
+    <input type="number" id="absence" placeholder="Number of Absences">
+
+    <br>
+    <button py-click="displaying">Submit</button>
+
+    <div id="plot"></div>
+</div>
+
+<py-script src="attendance.py"></py-script>
+
+</body>
+</html>
