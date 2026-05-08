@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Class Photos</title>
 
 
@@ -32,6 +33,7 @@ body{
     padding: 15px 25px;
     text-decoration: none;
     font-weight: bold;
+    transition: 0.3s;
 }
 
 .navbar li a:hover {
@@ -41,14 +43,19 @@ body{
 
 .container{
     padding: 30px;
-    width: 800px;
+    width: 900px;
     border-radius: 15px;
     background-color: white;
-    margin: 40px ;
+    margin: 40px auto;
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+
+h2{
+    color: #333;
+    margin-bottom: 25px;
+}
 
 .gallery{
     display: grid;
@@ -56,20 +63,32 @@ body{
     gap: 20px;
 }
 
+
 .photo-card{
     background-color: #6FD1D7;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
 }
+
+.photo-card:hover{
+    transform: scale(1.03);
+}
+
 
 .photo-card img{
     width: 100%;
+    height: 250px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
+
 .caption{
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: bold;
+    color: #222;
 }
 </style>
 </head>
@@ -85,8 +104,10 @@ body{
     </ul>
 </div>
 
+
 <div class="container">
-    <h2>Grade 10 Emerald 2025-2026's Journey</h2>
+    <h2> Grade 10 Emerald 2025-2026's Journey</h2>
+
     <div id="gallery" class="gallery"></div>
 </div>
 
@@ -100,7 +121,7 @@ photos = [
     {"src": "intramurals.png", "caption": "2026 Intramurals"},
     {"src": "teachers.png", "caption": "Teachers Day"},
     {"src": "cat graduation.png", "caption": "CAT Graduation 2026"},
-    {"src": "sabayang pagbigkas.png", "caption": "Sabayang Pagbigkas"},
+    {"src": "sabayang pagbigkas.png", "caption": "Sabayang Pagbigkas"}
 ]
 
 gallery = document.getElementById("gallery")
@@ -118,6 +139,7 @@ for p in photos:
 
     card.appendChild(img)
     card.appendChild(caption)
+
     gallery.appendChild(card)
 </py-script>
 
